@@ -11,8 +11,7 @@
     --blue-light: #e6f0fa;
     --orange: #E87722;
     --orange-light: #fff3e6;
-    --white: #ffffff;
-    --gray: #f5f6f8;
+    --gray: #f4f6f9;
     --text: #1a1a2e;
     --text-muted: #5a6a7a;
     --border: #dde3ee;
@@ -26,13 +25,12 @@
     font-family: Arial, sans-serif;
     background: var(--gray);
     color: var(--text);
-    min-height: 100vh;
+    font-size: 16px;
   }
 
-  /* Header */
+  /* ── HEADER ── */
   .site-header {
     background: var(--blue-dark);
-    padding: 0;
     position: relative;
     overflow: hidden;
   }
@@ -40,79 +38,63 @@
   .site-header::before {
     content: '';
     position: absolute;
-    top: -40px; right: -40px;
-    width: 220px; height: 220px;
+    top: -50px; right: -50px;
+    width: 250px; height: 250px;
     background: var(--orange);
-    opacity: 0.08;
+    opacity: 0.07;
     border-radius: 50%;
   }
 
   .header-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 32px 24px 28px;
+    max-width: 100%;
+    padding: 24px 32px 20px;
     position: relative;
     z-index: 1;
-  }
-
-  .company-badge {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 10px;
-    background: var(--orange);
+    gap: 20px;
+  }
+
+  .header-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  }
+
+  .header-text { flex: 1; }
+
+  .company-name {
+    font-size: 26px;
+    font-weight: 900;
     color: white;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 5px 14px;
-    border-radius: 3px;
-    margin-bottom: 14px;
+    line-height: 1.1;
   }
 
-  .company-badge::before {
-    content: '';
-    width: 8px; height: 8px;
-    background: white;
-    border-radius: 50%;
-    display: inline-block;
-  }
+  .company-name span { color: var(--orange); }
 
-  .header-title {
-    font-size: 38px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.05;
-    margin-bottom: 10px;
-  }
-
-  .header-title span { color: var(--orange); }
-
-  .header-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
+  .page-title {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
     letter-spacing: 0.04em;
   }
 
   .header-strip {
-    height: 4px;
-    background: linear-gradient(90deg, var(--orange) 0%, var(--orange) 35%, transparent 100%);
+    height: 5px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--orange) 40%, transparent 100%);
   }
 
-  /* ISO Banner */
-  .iso-banner {
+  /* ── ISO BAR ── */
+  .iso-bar {
     background: var(--blue);
-    padding: 14px 24px;
-    text-align: center;
-  }
-
-  .iso-banner-inner {
-    max-width: 960px;
-    margin: 0 auto;
+    padding: 10px 32px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
   }
 
@@ -120,32 +102,28 @@
     background: var(--orange);
     color: white;
     font-size: 13px;
-    font-weight: 700;
-    padding: 6px 16px;
+    font-weight: 800;
+    padding: 5px 16px;
     border-radius: 20px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
 
   .iso-text {
     color: rgba(255,255,255,0.85);
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
   }
 
-  /* Stats bar */
-  .stats-bar {
-    background: var(--orange);
-    padding: 0;
-  }
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--orange); }
 
   .stats-inner {
-    max-width: 960px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
 
   .stat-item {
-    padding: 16px 20px;
+    padding: 14px 16px;
     border-right: 1px solid rgba(255,255,255,0.2);
     text-align: center;
   }
@@ -153,150 +131,166 @@
   .stat-item:last-child { border-right: none; }
 
   .stat-num {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 26px;
+    font-weight: 900;
     color: white;
     line-height: 1;
   }
 
   .stat-label {
     font-size: 11px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.85);
     margin-top: 3px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-  }
-
-  /* Main */
-  .main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 32px 24px 48px;
-  }
-
-  /* Intro box */
-  .intro-box {
-    background: white;
-    border-radius: 10px;
-    padding: 24px 28px;
-    margin-bottom: 28px;
-    border-left: 4px solid var(--blue);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-  }
-
-  .intro-title {
-    font-size: 18px;
     font-weight: 700;
-    color: var(--blue);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
   }
 
-  .intro-text {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
+  /* ── MAIN ── */
+  .main { padding: 28px 32px 48px; }
 
-  /* Section */
+  /* ── SECTION ── */
   .section {
     margin-bottom: 28px;
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
   .section-header {
-    background: var(--blue);
     padding: 14px 22px;
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .section-header.orange { background: var(--orange); }
-  .section-header.green { background: var(--green); }
+  .sh-blue { background: var(--blue); }
+  .sh-orange { background: var(--orange); }
+  .sh-green { background: var(--green); }
 
   .section-icon {
-    width: 32px; height: 32px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
     flex-shrink: 0;
   }
 
   .section-title {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
     color: white;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
   .section-count {
     margin-left: auto;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.22);
     color: white;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
     border-radius: 20px;
-    white-space: nowrap;
   }
 
-  /* Table */
+  /* ── VMM SPEC GRID ── */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .spec-item {
+    background: white;
+    padding: 14px 18px;
+  }
+
+  .spec-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .spec-value {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.2;
+  }
+
+  /* ── TABLE ── */
   .table-wrap { overflow-x: auto; }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   thead tr { background: var(--blue-light); }
 
   thead th {
-    padding: 11px 16px;
+    padding: 13px 18px;
     text-align: left;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 800;
     color: var(--blue);
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
     white-space: nowrap;
   }
 
-  tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
-
-  tbody tr:hover { background: var(--blue-light); }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:hover { background: #f0f6ff; }
   tbody tr:last-child { border-bottom: none; }
 
   tbody td {
-    padding: 12px 16px;
-    color: var(--text);
+    padding: 13px 18px;
     vertical-align: middle;
     line-height: 1.5;
   }
 
-  .sno { color: var(--text-muted); font-size: 13px; text-align: center; }
-
-  .instrument-name {
-    font-weight: 700;
-    color: var(--blue-dark);
+  .sno {
+    color: var(--text-muted);
     font-size: 14px;
+    text-align: center;
+    font-weight: 700;
   }
 
-  .purpose-text {
-    font-size: 13px;
+  .inst-name {
+    font-weight: 800;
+    color: var(--blue-dark);
+    font-size: 15px;
+  }
+
+  .make-text {
+    font-size: 14px;
+    font-weight: 700;
     color: var(--text-muted);
-    line-height: 1.5;
+  }
+
+  .range-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .qty-text {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--blue);
+    text-align: center;
   }
 
   /* Badges */
@@ -304,20 +298,18 @@
     display: inline-block;
     padding: 3px 10px;
     border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
+    font-size: 12px;
+    font-weight: 800;
   }
 
-  .badge-blue { background: var(--blue-light); color: var(--blue); }
-  .badge-orange { background: var(--orange-light); color: var(--orange); }
-  .badge-green { background: var(--green-light); color: var(--green); }
-  .badge-gray { background: #f0f0f0; color: #555; }
+  .bb { background: var(--blue-light); color: var(--blue); }
+  .bo { background: var(--orange-light); color: var(--orange); }
+  .bg { background: var(--green-light); color: var(--green); }
 
-  /* Quality points */
+  /* Quality grid */
   .quality-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1px;
     background: var(--border);
   }
@@ -331,37 +323,40 @@
   }
 
   .quality-dot {
-    width: 10px; height: 10px;
+    width: 12px; height: 12px;
     background: var(--orange);
     border-radius: 50%;
     flex-shrink: 0;
-    margin-top: 4px;
+    margin-top: 5px;
+  }
+
+  .quality-strong {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 3px;
   }
 
   .quality-text {
-    font-size: 13px;
-    color: var(--text);
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 600;
     line-height: 1.5;
-  }
-
-  .quality-text strong {
-    display: block;
-    color: var(--blue);
-    font-size: 13px;
-    margin-bottom: 2px;
   }
 
   /* Footer */
   .footer {
     background: var(--blue-dark);
     text-align: center;
-    padding: 20px;
+    padding: 22px 32px;
   }
 
   .footer p {
-    color: rgba(255,255,255,0.5);
-    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
     letter-spacing: 0.04em;
+    line-height: 1.8;
   }
 
   .footer strong { color: var(--orange); }
@@ -369,38 +364,38 @@
 </head>
 <body>
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="site-header">
   <div class="header-inner">
-    <div class="company-badge">Bright CNC Tech · Chennai</div>
-    <div class="header-title">Measuring &<br><span>Inspection Instruments</span></div>
-    <div class="header-sub">Plot No.1, Sri Ganesh Street, Periya Colony Extension Road, Athipet, Chennai – 600 058</div>
+    <img class="header-logo" src="data:image/jpeg;base64,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" alt="Bright CNC Tech Logo">
+    <div class="header-text">
+      <div class="company-name">BRIGHT <span>CNC</span> TECH</div>
+      <div class="page-title">Measuring &amp; Inspection Instruments — Athipet, Chennai</div>
+    </div>
   </div>
   <div class="header-strip"></div>
 </div>
 
-<!-- ISO Banner -->
-<div class="iso-banner">
-  <div class="iso-banner-inner">
-    <span class="iso-pill">ISO 9001 : 2015</span>
-    <span class="iso-text">Certified Quality Management System — 100% Inspection Before Every Dispatch</span>
-  </div>
+<!-- ISO BAR -->
+<div class="iso-bar">
+  <span class="iso-pill">ISO 9001 : 2015</span>
+  <span class="iso-text">Certified Quality Management System — 100% Inspection Before Every Dispatch</span>
 </div>
 
-<!-- Stats bar -->
+<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item">
-      <div class="stat-num">14+</div>
+      <div class="stat-num">16+</div>
       <div class="stat-label">Instruments</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Inspection</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">VMM</div>
       <div class="stat-label">Video Measuring Machine</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Inspection</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">Zero</div>
@@ -411,228 +406,154 @@
 
 <div class="main">
 
-
-
-  <!-- Video Measuring Machine -->
+  <!-- VIDEO MEASURING MACHINE -->
   <div class="section">
-    <div class="section-header">
+    <div class="section-header sh-blue">
       <div class="section-icon">🎥</div>
       <div class="section-title">Video Measuring Machine</div>
       <div class="section-count">1 No</div>
     </div>
-    <div class="quality-grid">
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Make</strong>
-          CARMAR
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Model</strong>
-          VMM-3020D
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Stage Size</strong>
-          500 x 330 mm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Glass Size</strong>
-          350 x 280 mm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>X / Y Travel</strong>
-          300 x 200 mm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Z Axis Travel</strong>
-          150 mm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Resolution X/Y/Z</strong>
-          0.0005 mm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Accuracy</strong>
-          (3 + L/75) µm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Weight</strong>
-          140 Kg
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Dimensions</strong>
-          760 x 600 x 900 mm
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Digital Display</strong>
-          3M DRO (Optional)
-        </div>
-      </div>
-      <div class="quality-item">
-        <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Measuring Software</strong>
-          QMS3D-M — Taiwan Made
-        </div>
-      </div>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="spec-label">Make</div><div class="spec-value">CARMAR</div></div>
+      <div class="spec-item"><div class="spec-label">Model</div><div class="spec-value">VMM-3020D</div></div>
+      <div class="spec-item"><div class="spec-label">Stage Size</div><div class="spec-value">500 × 330 mm</div></div>
+      <div class="spec-item"><div class="spec-label">Glass Size</div><div class="spec-value">350 × 280 mm</div></div>
+      <div class="spec-item"><div class="spec-label">X / Y Travel</div><div class="spec-value">300 × 200 mm</div></div>
+      <div class="spec-item"><div class="spec-label">Z Axis Travel</div><div class="spec-value">150 mm</div></div>
+      <div class="spec-item"><div class="spec-label">Resolution X/Y/Z</div><div class="spec-value">0.0005 mm</div></div>
+      <div class="spec-item"><div class="spec-label">Accuracy</div><div class="spec-value">(3+L/75) µm</div></div>
+      <div class="spec-item"><div class="spec-label">Weight</div><div class="spec-value">140 Kg</div></div>
+      <div class="spec-item"><div class="spec-label">Dimensions</div><div class="spec-value">760×600×900 mm</div></div>
+      <div class="spec-item"><div class="spec-label">Digital Display</div><div class="spec-value">3M DRO</div></div>
+      <div class="spec-item"><div class="spec-label">Software</div><div class="spec-value">QMS3D-M Taiwan</div></div>
     </div>
   </div>
 
-  <!-- Dimensional Measuring Instruments -->
+  <!-- DIMENSIONAL INSTRUMENTS -->
   <div class="section">
-    <div class="section-header">
+    <div class="section-header sh-orange">
       <div class="section-icon">📐</div>
       <div class="section-title">Dimensional Measuring Instruments</div>
-      <div class="section-count">14 Instruments</div>
+      <div class="section-count">14 Nos</div>
     </div>
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
-            <th style="width:40px;">S.No</th>
+            <th style="width:46px;">S.No</th>
             <th>Instrument</th>
             <th>Make</th>
-            <th>Range & Details</th>
-            <th>Qty</th>
+            <th>Range &amp; Details</th>
+            <th style="width:80px; text-align:center;">Qty</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="sno">1</td>
-            <td class="instrument-name">Inside Calipers</td>
-            <td><span class="badge badge-blue">Tecklock</span></td>
-            <td class="purpose-text">20–35 mm — 1 No<br>30–62 mm — 1 No</td>
-            <td><span class="badge badge-gray">2 Nos</span></td>
+            <td class="inst-name">Inside Calipers</td>
+            <td class="make-text">Tecklock</td>
+            <td class="range-text">20 – 35 mm (1 No) &nbsp;|&nbsp; 30 – 62 mm (1 No)</td>
+            <td class="qty-text">2 Nos</td>
           </tr>
           <tr>
             <td class="sno">2</td>
-            <td class="instrument-name">Vernier Caliper</td>
-            <td><span class="badge badge-blue">Mitutoyo</span></td>
-            <td class="purpose-text">0–200 mm — 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Vernier Caliper</td>
+            <td class="make-text">Mitutoyo</td>
+            <td class="range-text">0 – 200 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">3</td>
-            <td class="instrument-name">Vernier Digital Height Gauge</td>
-            <td><span class="badge badge-blue">Mitutoyo</span></td>
-            <td class="purpose-text">0–300 mm — 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Vernier Digital Height Gauge</td>
+            <td class="make-text">Mitutoyo</td>
+            <td class="range-text">0 – 300 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">4</td>
-            <td class="instrument-name">Micrometer — 0 to 25 mm</td>
-            <td><span class="badge badge-blue">Yamayo & Mitutoyo</span></td>
-            <td class="purpose-text">0–25 mm — Yamayo 1 No, Mitutoyo 1 No</td>
-            <td><span class="badge badge-gray">2 Nos</span></td>
+            <td class="inst-name">Micrometer — 0 to 25 mm</td>
+            <td class="make-text">Yamayo &amp; Mitutoyo</td>
+            <td class="range-text">0 – 25 mm &nbsp;|&nbsp; Yamayo 1 No + Mitutoyo 1 No</td>
+            <td class="qty-text">2 Nos</td>
           </tr>
           <tr>
             <td class="sno">5</td>
-            <td class="instrument-name">Micrometer — 25 to 50 mm</td>
-            <td><span class="badge badge-blue">Yamayo & Mitutoyo</span></td>
-            <td class="purpose-text">25–50 mm — Yamayo 1 No, Mitutoyo 1 No</td>
-            <td><span class="badge badge-gray">2 Nos</span></td>
+            <td class="inst-name">Micrometer — 25 to 50 mm</td>
+            <td class="make-text">Yamayo &amp; Mitutoyo</td>
+            <td class="range-text">25 – 50 mm &nbsp;|&nbsp; Yamayo 1 No + Mitutoyo 1 No</td>
+            <td class="qty-text">2 Nos</td>
           </tr>
           <tr>
             <td class="sno">6</td>
-            <td class="instrument-name">Micrometer — 50 to 75 mm</td>
-            <td><span class="badge badge-blue">Yamayo</span></td>
-            <td class="purpose-text">50–75 mm — Yamayo 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Micrometer — 50 to 75 mm</td>
+            <td class="make-text">Yamayo</td>
+            <td class="range-text">50 – 75 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">7</td>
-            <td class="instrument-name">Micrometer — 75 to 100 mm</td>
-            <td><span class="badge badge-blue">Mitutoyo</span></td>
-            <td class="purpose-text">75–100 mm — Mitutoyo 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Micrometer — 75 to 100 mm</td>
+            <td class="make-text">Mitutoyo</td>
+            <td class="range-text">75 – 100 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">8</td>
-            <td class="instrument-name">Micrometer — 100 to 125 mm</td>
-            <td><span class="badge badge-blue">Mitutoyo</span></td>
-            <td class="purpose-text">100–125 mm — Mitutoyo 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Micrometer — 100 to 125 mm</td>
+            <td class="make-text">Mitutoyo</td>
+            <td class="range-text">100 – 125 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">9</td>
-            <td class="instrument-name">Blade Micrometer — 50 to 75 mm</td>
-            <td><span class="badge badge-blue">Baker</span></td>
-            <td class="purpose-text">50–75 mm — Baker 1 No — for narrow grooves & slots</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Blade Micrometer — 50 to 75 mm</td>
+            <td class="make-text">Baker</td>
+            <td class="range-text">50 – 75 mm — For narrow grooves &amp; slots</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">10</td>
-            <td class="instrument-name">Blade Micrometer — 75 to 100 mm</td>
-            <td><span class="badge badge-blue">Mitutoyo</span></td>
-            <td class="purpose-text">75–100 mm — Mitutoyo 1 No — for narrow grooves & slots</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Blade Micrometer — 75 to 100 mm</td>
+            <td class="make-text">Mitutoyo</td>
+            <td class="range-text">75 – 100 mm — For narrow grooves &amp; slots</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">11</td>
-            <td class="instrument-name">Bore Dial Gauge — 18 to 35 mm</td>
-            <td><span class="badge badge-blue">Yamayo</span></td>
-            <td class="purpose-text">18–35 mm — Yamayo 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Bore Dial Gauge — 18 to 35 mm</td>
+            <td class="make-text">Yamayo</td>
+            <td class="range-text">18 – 35 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">12</td>
-            <td class="instrument-name">Bore Dial Gauge — 35 to 60 mm</td>
-            <td><span class="badge badge-blue">Yamayo</span></td>
-            <td class="purpose-text">35–60 mm — Yamayo 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Bore Dial Gauge — 35 to 60 mm</td>
+            <td class="make-text">Yamayo</td>
+            <td class="range-text">35 – 60 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">13</td>
-            <td class="instrument-name">Bore Dial Gauge — 10 to 18.5 mm</td>
-            <td><span class="badge badge-blue">Mitutoyo</span></td>
-            <td class="purpose-text">10–18.5 mm — Mitutoyo 1 No</td>
-            <td><span class="badge badge-gray">1 No</span></td>
+            <td class="inst-name">Bore Dial Gauge — 10 to 18.5 mm</td>
+            <td class="make-text">Mitutoyo</td>
+            <td class="range-text">10 – 18.5 mm</td>
+            <td class="qty-text">1 No</td>
           </tr>
           <tr>
             <td class="sno">14</td>
-            <td class="instrument-name">Dial Comparator Stand</td>
-            <td><span class="badge badge-blue">—</span></td>
-            <td class="purpose-text">4 Nos — on Granite Surface Table 200 x 150 mm</td>
-            <td><span class="badge badge-gray">4 Nos</span></td>
+            <td class="inst-name">Dial Comparator Stand</td>
+            <td class="make-text">—</td>
+            <td class="range-text">On Granite Surface Table — 200 × 150 mm</td>
+            <td class="qty-text">4 Nos</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Air Gauges -->
+  <!-- AIR GAUGES -->
   <div class="section">
-    <div class="section-header orange">
+    <div class="section-header sh-blue">
       <div class="section-icon">💨</div>
       <div class="section-title">Air Gauges — Pneumatic Measurement</div>
       <div class="section-count">2 Instruments</div>
@@ -641,9 +562,9 @@
       <table>
         <thead>
           <tr>
-            <th style="width:40px;">S.No</th>
+            <th style="width:46px;">S.No</th>
             <th>Instrument</th>
-            <th>Make / Model</th>
+            <th>Make</th>
             <th>Channels</th>
             <th>Purpose</th>
           </tr>
@@ -651,26 +572,26 @@
         <tbody>
           <tr>
             <td class="sno">1</td>
-            <td class="instrument-name">Air Gauge — 4 Channel</td>
-            <td><span class="badge badge-orange">4 Channel</span></td>
-            <td style="text-align:center;"><strong>4</strong></td>
-            <td class="purpose-text">Simultaneously measures 4 points on a component — ideal for high volume production inspection of bores and diameters</td>
+            <td class="inst-name">Air Gauge</td>
+            <td class="make-text">4 Channel</td>
+            <td class="qty-text">4</td>
+            <td class="range-text">Simultaneously measures 4 points — ideal for high volume bore inspection</td>
           </tr>
           <tr>
             <td class="sno">2</td>
-            <td class="instrument-name">Baker Air Gauge — 2 Channel</td>
-            <td><span class="badge badge-orange">Baker</span></td>
-            <td style="text-align:center;"><strong>2</strong></td>
-            <td class="purpose-text">Measures 2 points simultaneously using pneumatic pressure — high speed, non-contact measurement for precision bores</td>
+            <td class="inst-name">Baker Air Gauge</td>
+            <td class="make-text">Baker — 2 Channel</td>
+            <td class="qty-text">2</td>
+            <td class="range-text">High speed pneumatic measurement — non-contact precision bore check</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Surface Table -->
+  <!-- SURFACE TABLE -->
   <div class="section">
-    <div class="section-header green">
+    <div class="section-header sh-green">
       <div class="section-icon">⬛</div>
       <div class="section-title">Surface Table — Inspection Base</div>
       <div class="section-count">1 No</div>
@@ -679,27 +600,29 @@
       <table>
         <thead>
           <tr>
-            <th style="width:40px;">S.No</th>
+            <th style="width:46px;">S.No</th>
             <th>Equipment</th>
             <th>Material</th>
+            <th>Size</th>
             <th>Purpose</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="sno">1</td>
-            <td class="instrument-name">Surface Table</td>
-            <td><span class="badge badge-green">Granite</span></td>
-            <td class="purpose-text">Provides a perfectly flat reference base for all dimensional inspection activities — used with height gauge, dial comparator and other instruments for accurate measurement</td>
+            <td class="inst-name">Surface Table</td>
+            <td class="make-text"><span class="badge bg">Granite</span></td>
+            <td class="range-text">200 × 150 mm</td>
+            <td class="range-text">Perfectly flat reference base for all dimensional inspection activities</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Quality Process -->
+  <!-- QUALITY PROCESS -->
   <div class="section">
-    <div class="section-header">
+    <div class="section-header sh-orange">
       <div class="section-icon">✔</div>
       <div class="section-title">Our Quality Inspection Process</div>
       <div class="section-count">ISO 9001:2015</div>
@@ -707,44 +630,44 @@
     <div class="quality-grid">
       <div class="quality-item">
         <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>First Article Inspection</strong>
-          Every new component is fully inspected before mass production begins
+        <div>
+          <span class="quality-strong">First Article Inspection</span>
+          <span class="quality-text">Every new component fully inspected before mass production begins</span>
         </div>
       </div>
       <div class="quality-item">
         <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>In-Process Inspection</strong>
-          Components checked at every stage of machining on the shop floor
+        <div>
+          <span class="quality-strong">In-Process Inspection</span>
+          <span class="quality-text">Components checked at every stage of machining on shop floor</span>
         </div>
       </div>
       <div class="quality-item">
         <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Final Inspection</strong>
-          100% dimensional check in dedicated inspection area before packing
+        <div>
+          <span class="quality-strong">Final Inspection</span>
+          <span class="quality-text">100% dimensional check in dedicated area before packing &amp; dispatch</span>
         </div>
       </div>
       <div class="quality-item">
         <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Instrument Calibration</strong>
-          All measuring instruments are regularly calibrated for accuracy
+        <div>
+          <span class="quality-strong">Instrument Calibration</span>
+          <span class="quality-text">All instruments regularly calibrated for consistent accuracy</span>
         </div>
       </div>
       <div class="quality-item">
         <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>Video Measuring Machine</strong>
-          Carmar VMM-3020D with 0.0005mm resolution for critical components
+        <div>
+          <span class="quality-strong">Video Measuring Machine</span>
+          <span class="quality-text">Carmar VMM-3020D with 0.0005mm resolution for critical components</span>
         </div>
       </div>
       <div class="quality-item">
         <div class="quality-dot"></div>
-        <div class="quality-text">
-          <strong>FIFO System</strong>
-          First In First Out dispatch system for on-time delivery
+        <div>
+          <span class="quality-strong">FIFO Dispatch System</span>
+          <span class="quality-text">First In First Out system ensures on-time delivery to all customers</span>
         </div>
       </div>
     </div>
@@ -752,10 +675,10 @@
 
 </div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <div class="footer">
-  <p><strong>BRIGHT CNC TECH</strong> · Plot No.1, Sri Ganesh Street, Periya Colony Extn Road, Athipet, Chennai – 600 058</p>
-  <p style="margin-top:6px;">Email: brightcnctech@yahoo.com &nbsp;|&nbsp; ISO 9001:2015 Certified</p>
+  <p><strong>BRIGHT CNC TECH</strong> &nbsp;|&nbsp; Plot No.1, Sri Ganesh Street, Periya Colony Extn Road, Athipet, Chennai – 600 058</p>
+  <p>Email: brightcnctech@yahoo.com &nbsp;|&nbsp; ISO 9001:2015 Certified &nbsp;|&nbsp; Mon–Sat 24 Hours</p>
 </div>
 
 </body>
