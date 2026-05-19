@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measuring Instruments — Bright CNC Tech</title>
+<style>
+  :root {
+    --blue: #1A4A8A;
+    --blue-dark: #0d2f5c;
+    --blue-light: #e6f0fa;
+    --orange: #E87722;
+    --orange-light: #fff3e6;
+    --white: #ffffff;
+    --gray: #f5f6f8;
+    --text: #1a1a2e;
+    --text-muted: #5a6a7a;
+    --border: #dde3ee;
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--gray);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .site-header {
+    background: var(--blue-dark);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    background: var(--orange);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .company-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+
+  .company-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .header-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  .header-title span { color: var(--orange); }
+
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+  }
+
+  .header-strip {
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--orange) 35%, transparent 100%);
+  }
+
+  /* ISO Banner */
+  .iso-banner {
+    background: var(--blue);
+    padding: 14px 24px;
+    text-align: center;
+  }
+
+  .iso-banner-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .iso-pill {
+    background: var(--orange);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .iso-text {
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--orange);
+    padding: 0;
+  }
+
+  .stats-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-item {
+    padding: 16px 20px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 3px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Main */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  /* Intro box */
+  .intro-box {
+    background: white;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    border-left: 4px solid var(--blue);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  .intro-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .intro-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 28px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  .section-header {
+    background: var(--blue);
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-header.orange { background: var(--orange); }
+  .section-header.green { background: var(--green); }
+
+  .section-icon {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .section-count {
+    margin-left: auto;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  thead tr { background: var(--blue-light); }
+
+  thead th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--blue);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: var(--blue-light); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 12px 16px;
+    color: var(--text);
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .sno { color: var(--text-muted); font-size: 13px; text-align: center; }
+
+  .instrument-name {
+    font-weight: 700;
+    color: var(--blue-dark);
+    font-size: 14px;
+  }
+
+  .purpose-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .badge-blue { background: var(--blue-light); color: var(--blue); }
+  .badge-orange { background: var(--orange-light); color: var(--orange); }
+  .badge-green { background: var(--green-light); color: var(--green); }
+  .badge-gray { background: #f0f0f0; color: #555; }
+
+  /* Quality points */
+  .quality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .quality-item {
+    background: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .quality-dot {
+    width: 10px; height: 10px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .quality-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .quality-text strong {
+    display: block;
+    color: var(--blue);
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--blue-dark);
+    text-align: center;
+    padding: 20px;
+  }
+
+  .footer p {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .footer strong { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="company-badge">Bright CNC Tech · Chennai</div>
+    <div class="header-title">Measuring &<br><span>Inspection Instruments</span></div>
+    <div class="header-sub">Plot No.1, Sri Ganesh Street, Periya Colony Extension Road, Athipet, Chennai – 600 058</div>
+  </div>
+  <div class="header-strip"></div>
+</div>
+
+<!-- ISO Banner -->
+<div class="iso-banner">
+  <div class="iso-banner-inner">
+    <span class="iso-pill">ISO 9001 : 2015</span>
+    <span class="iso-text">Certified Quality Management System — 100% Inspection Before Every Dispatch</span>
+  </div>
+</div>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">14+</div>
+      <div class="stat-label">Instruments</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Inspection</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">VMM</div>
+      <div class="stat-label">Video Measuring Machine</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Zero</div>
+      <div class="stat-label">Defect Target</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+
+
+  <!-- Video Measuring Machine -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🎥</div>
+      <div class="section-title">Video Measuring Machine</div>
+      <div class="section-count">1 No</div>
+    </div>
+    <div class="quality-grid">
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Make</strong>
+          CARMAR
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Model</strong>
+          VMM-3020D
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Stage Size</strong>
+          500 x 330 mm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Glass Size</strong>
+          350 x 280 mm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>X / Y Travel</strong>
+          300 x 200 mm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Z Axis Travel</strong>
+          150 mm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Resolution X/Y/Z</strong>
+          0.0005 mm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Accuracy</strong>
+          (3 + L/75) µm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Weight</strong>
+          140 Kg
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Dimensions</strong>
+          760 x 600 x 900 mm
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Digital Display</strong>
+          3M DRO (Optional)
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Measuring Software</strong>
+          QMS3D-M — Taiwan Made
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dimensional Measuring Instruments -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📐</div>
+      <div class="section-title">Dimensional Measuring Instruments</div>
+      <div class="section-count">14 Instruments</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40px;">S.No</th>
+            <th>Instrument</th>
+            <th>Make</th>
+            <th>Range & Details</th>
+            <th>Qty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sno">1</td>
+            <td class="instrument-name">Inside Calipers</td>
+            <td><span class="badge badge-blue">Tecklock</span></td>
+            <td class="purpose-text">20–35 mm — 1 No<br>30–62 mm — 1 No</td>
+            <td><span class="badge badge-gray">2 Nos</span></td>
+          </tr>
+          <tr>
+            <td class="sno">2</td>
+            <td class="instrument-name">Vernier Caliper</td>
+            <td><span class="badge badge-blue">Mitutoyo</span></td>
+            <td class="purpose-text">0–200 mm — 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">3</td>
+            <td class="instrument-name">Vernier Digital Height Gauge</td>
+            <td><span class="badge badge-blue">Mitutoyo</span></td>
+            <td class="purpose-text">0–300 mm — 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">4</td>
+            <td class="instrument-name">Micrometer — 0 to 25 mm</td>
+            <td><span class="badge badge-blue">Yamayo & Mitutoyo</span></td>
+            <td class="purpose-text">0–25 mm — Yamayo 1 No, Mitutoyo 1 No</td>
+            <td><span class="badge badge-gray">2 Nos</span></td>
+          </tr>
+          <tr>
+            <td class="sno">5</td>
+            <td class="instrument-name">Micrometer — 25 to 50 mm</td>
+            <td><span class="badge badge-blue">Yamayo & Mitutoyo</span></td>
+            <td class="purpose-text">25–50 mm — Yamayo 1 No, Mitutoyo 1 No</td>
+            <td><span class="badge badge-gray">2 Nos</span></td>
+          </tr>
+          <tr>
+            <td class="sno">6</td>
+            <td class="instrument-name">Micrometer — 50 to 75 mm</td>
+            <td><span class="badge badge-blue">Yamayo</span></td>
+            <td class="purpose-text">50–75 mm — Yamayo 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">7</td>
+            <td class="instrument-name">Micrometer — 75 to 100 mm</td>
+            <td><span class="badge badge-blue">Mitutoyo</span></td>
+            <td class="purpose-text">75–100 mm — Mitutoyo 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">8</td>
+            <td class="instrument-name">Micrometer — 100 to 125 mm</td>
+            <td><span class="badge badge-blue">Mitutoyo</span></td>
+            <td class="purpose-text">100–125 mm — Mitutoyo 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">9</td>
+            <td class="instrument-name">Blade Micrometer — 50 to 75 mm</td>
+            <td><span class="badge badge-blue">Baker</span></td>
+            <td class="purpose-text">50–75 mm — Baker 1 No — for narrow grooves & slots</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">10</td>
+            <td class="instrument-name">Blade Micrometer — 75 to 100 mm</td>
+            <td><span class="badge badge-blue">Mitutoyo</span></td>
+            <td class="purpose-text">75–100 mm — Mitutoyo 1 No — for narrow grooves & slots</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">11</td>
+            <td class="instrument-name">Bore Dial Gauge — 18 to 35 mm</td>
+            <td><span class="badge badge-blue">Yamayo</span></td>
+            <td class="purpose-text">18–35 mm — Yamayo 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">12</td>
+            <td class="instrument-name">Bore Dial Gauge — 35 to 60 mm</td>
+            <td><span class="badge badge-blue">Yamayo</span></td>
+            <td class="purpose-text">35–60 mm — Yamayo 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">13</td>
+            <td class="instrument-name">Bore Dial Gauge — 10 to 18.5 mm</td>
+            <td><span class="badge badge-blue">Mitutoyo</span></td>
+            <td class="purpose-text">10–18.5 mm — Mitutoyo 1 No</td>
+            <td><span class="badge badge-gray">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="sno">14</td>
+            <td class="instrument-name">Dial Comparator Stand</td>
+            <td><span class="badge badge-blue">—</span></td>
+            <td class="purpose-text">4 Nos — on Granite Surface Table 200 x 150 mm</td>
+            <td><span class="badge badge-gray">4 Nos</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Air Gauges -->
+  <div class="section">
+    <div class="section-header orange">
+      <div class="section-icon">💨</div>
+      <div class="section-title">Air Gauges — Pneumatic Measurement</div>
+      <div class="section-count">2 Instruments</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40px;">S.No</th>
+            <th>Instrument</th>
+            <th>Make / Model</th>
+            <th>Channels</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sno">1</td>
+            <td class="instrument-name">Air Gauge — 4 Channel</td>
+            <td><span class="badge badge-orange">4 Channel</span></td>
+            <td style="text-align:center;"><strong>4</strong></td>
+            <td class="purpose-text">Simultaneously measures 4 points on a component — ideal for high volume production inspection of bores and diameters</td>
+          </tr>
+          <tr>
+            <td class="sno">2</td>
+            <td class="instrument-name">Baker Air Gauge — 2 Channel</td>
+            <td><span class="badge badge-orange">Baker</span></td>
+            <td style="text-align:center;"><strong>2</strong></td>
+            <td class="purpose-text">Measures 2 points simultaneously using pneumatic pressure — high speed, non-contact measurement for precision bores</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Surface Table -->
+  <div class="section">
+    <div class="section-header green">
+      <div class="section-icon">⬛</div>
+      <div class="section-title">Surface Table — Inspection Base</div>
+      <div class="section-count">1 No</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40px;">S.No</th>
+            <th>Equipment</th>
+            <th>Material</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sno">1</td>
+            <td class="instrument-name">Surface Table</td>
+            <td><span class="badge badge-green">Granite</span></td>
+            <td class="purpose-text">Provides a perfectly flat reference base for all dimensional inspection activities — used with height gauge, dial comparator and other instruments for accurate measurement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Quality Process -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">✔</div>
+      <div class="section-title">Our Quality Inspection Process</div>
+      <div class="section-count">ISO 9001:2015</div>
+    </div>
+    <div class="quality-grid">
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>First Article Inspection</strong>
+          Every new component is fully inspected before mass production begins
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>In-Process Inspection</strong>
+          Components checked at every stage of machining on the shop floor
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Final Inspection</strong>
+          100% dimensional check in dedicated inspection area before packing
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Instrument Calibration</strong>
+          All measuring instruments are regularly calibrated for accuracy
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>Video Measuring Machine</strong>
+          Carmar VMM-3020D with 0.0005mm resolution for critical components
+        </div>
+      </div>
+      <div class="quality-item">
+        <div class="quality-dot"></div>
+        <div class="quality-text">
+          <strong>FIFO System</strong>
+          First In First Out dispatch system for on-time delivery
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p><strong>BRIGHT CNC TECH</strong> · Plot No.1, Sri Ganesh Street, Periya Colony Extn Road, Athipet, Chennai – 600 058</p>
+  <p style="margin-top:6px;">Email: brightcnctech@yahoo.com &nbsp;|&nbsp; ISO 9001:2015 Certified</p>
+</div>
+
+</body>
+</html>
