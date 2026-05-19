@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machines & Equipment — Bright CNC Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1A4A8A;
+    --blue-dark: #0d2f5c;
+    --blue-light: #e6f0fa;
+    --orange: #E87722;
+    --orange-light: #fff3e6;
+    --white: #ffffff;
+    --gray: #f5f6f8;
+    --text: #1a1a2e;
+    --text-muted: #5a6a7a;
+    --border: #dde3ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--gray);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .site-header {
+    background: var(--blue-dark);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    background: var(--orange);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 30%;
+    width: 160px; height: 160px;
+    background: var(--orange);
+    opacity: 0.05;
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .company-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+
+  .company-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .header-title span { color: var(--orange); }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+  }
+
+  .header-strip {
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--orange) 35%, transparent 100%);
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--blue);
+    padding: 0;
+  }
+
+  .stats-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-item {
+    padding: 18px 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 3px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Main content */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 32px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  .section-header {
+    background: var(--blue);
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-header.orange { background: var(--orange); }
+
+  .section-icon {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .section-count {
+    margin-left: auto;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: var(--blue-light);
+  }
+
+  thead th {
+    padding: 11px 16px;
+    text-align: left;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--blue);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: var(--blue-light); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 11px 16px;
+    color: var(--text);
+    vertical-align: middle;
+  }
+
+  .total-row {
+    background: var(--orange-light) !important;
+    font-weight: 600;
+  }
+
+  .total-row td { color: var(--orange) !important; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-blue { background: var(--blue-light); color: var(--blue); }
+  .badge-orange { background: var(--orange-light); color: var(--orange); }
+  .badge-green { background: #e8f5e9; color: #2e7d32; }
+
+  /* Make cell */
+  .make-cell {
+    font-weight: 600;
+    color: var(--blue-dark);
+  }
+
+  /* Spec grid for VMC */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .spec-item {
+    background: white;
+    padding: 14px 18px;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .spec-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  /* 3-col machine table */
+  .three-col thead th:not(:first-child) {
+    text-align: center;
+    background: var(--blue);
+    color: white;
+  }
+
+  .three-col td:not(:first-child) { text-align: center; }
+
+  .three-col thead th:nth-child(2) { background: var(--blue); }
+  .three-col thead th:nth-child(3) { background: #2260a8; }
+  .three-col thead th:nth-child(4) { background: #2e6db8; }
+
+  /* Footer */
+  .footer {
+    background: var(--blue-dark);
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+  }
+
+  .footer p {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .footer strong { color: var(--orange); }
+
+  /* ISO badge */
+  .iso-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange-light);
+    border: 1.5px solid var(--orange);
+    border-radius: 6px;
+    padding: 8px 16px;
+    margin: 16px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange);
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="company-badge">Bright CNC Tech · Chennai</div>
+    <div class="header-title">Machines &<br><span>Equipment</span></div>
+    <div class="header-sub">Plot No.1, Sri Ganesh Street, Periya Colony Extension Road, Athipet, Chennai – 600 058</div>
+  </div>
+  <div class="header-strip"></div>
+</div>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">CNC Turning Centers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Injection Moulding</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Traub Automated Lathes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Total Machines</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- CNC Turning -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚙</div>
+      <div class="section-title">CNC Turning Machines</div>
+      <div class="section-count">8 Nos</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Qty</th>
+            <th>Max Turning Dia</th>
+            <th>Max Turning Length</th>
+            <th>Chuck Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="make-cell">Lokesh Machines</td>
+            <td><span class="badge badge-blue">TL 20</span></td>
+            <td>2 Nos</td>
+            <td>200 mm</td>
+            <td>270 mm</td>
+            <td>200 mm</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Lokesh Machines</td>
+            <td><span class="badge badge-blue">TL 160</span></td>
+            <td>1 No</td>
+            <td>165 mm</td>
+            <td>250 mm</td>
+            <td>165 mm</td>
+          </tr>
+          <tr>
+            <td class="make-cell">ACE Designers</td>
+            <td><span class="badge badge-blue">CUB</span></td>
+            <td>3 Nos</td>
+            <td>140 mm</td>
+            <td>200 mm</td>
+            <td>165 mm</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Askar Microns</td>
+            <td><span class="badge badge-blue">Spin Master</span></td>
+            <td>1 No</td>
+            <td>150 mm</td>
+            <td>100 mm</td>
+            <td>135 mm</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Askar Microns</td>
+            <td><span class="badge badge-blue">Spinner Dot Com</span></td>
+            <td>1 No</td>
+            <td>250 mm</td>
+            <td>300 mm</td>
+            <td>165 mm</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="2"><strong>Total CNC Turning Machines</strong></td>
+            <td><strong>8 Nos</strong></td>
+            <td colspan="3"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VMC -->
+  <div class="section">
+    <div class="section-header orange">
+      <div class="section-icon">🖥</div>
+      <div class="section-title">Vertical Machining Center (VMC)</div>
+      <div class="section-count">1 No</div>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="spec-label">Make</div>
+        <div class="spec-value">AMS</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Model</div>
+        <div class="spec-value">MCV 450</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">X Axis Travel</div>
+        <div class="spec-value">800 mm</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Y Axis Travel</div>
+        <div class="spec-value">450 mm</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Z Axis Travel</div>
+        <div class="spec-value">500 mm</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Spindle RPM</div>
+        <div class="spec-value">60 – 6000</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">ATC Tools</div>
+        <div class="spec-value">24</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Max Load on Table</div>
+        <div class="spec-value">400 Kg</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">4th Axis Make</div>
+        <div class="spec-value">U CAM</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">4th Axis Model</div>
+        <div class="spec-value">URX 200</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Injection Moulding -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔩</div>
+      <div class="section-title">Plastic Injection Moulding Machines</div>
+      <div class="section-count">3 Nos</div>
+    </div>
+    <div class="table-wrap">
+      <table class="three-col">
+        <thead>
+          <tr>
+            <th>Specification</th>
+            <th>Machine 1</th>
+            <th>Machine 2</th>
+            <th>Machine 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="make-cell">Make</td>
+            <td><span class="badge badge-orange">Windsor</span></td>
+            <td><span class="badge badge-orange">Electronica</span></td>
+            <td><span class="badge badge-orange">Electronica</span></td>
+          </tr>
+          <tr>
+            <td class="make-cell">Capacity</td>
+            <td>100 Ton</td>
+            <td>140 Ton</td>
+            <td>180 Ton</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Shot Weight</td>
+            <td>120 g</td>
+            <td>336 g</td>
+            <td>456 g</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Max Mold Weight</td>
+            <td>350 Kg</td>
+            <td>500 Kg</td>
+            <td>700 Kg</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Open Stroke</td>
+            <td>350 mm</td>
+            <td>400 mm</td>
+            <td>460 mm</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Screw Dia</td>
+            <td>30 mm</td>
+            <td>55 mm</td>
+            <td>55 mm</td>
+          </tr>
+          <tr>
+            <td class="make-cell">Tie Bar Distance</td>
+            <td>360 x 360 mm</td>
+            <td>450 x 385 mm</td>
+            <td>520 x 450 mm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Other Machines -->
+  <div class="section">
+    <div class="section-header orange">
+      <div class="section-icon">🔧</div>
+      <div class="section-title">Other Machines</div>
+      <div class="section-count">14 Nos</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Machine</th>
+            <th>Specification</th>
+            <th>Qty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="make-cell">Traub Automated Lathe</td>
+            <td>A25 Model</td>
+            <td><span class="badge badge-green">10 Nos</span></td>
+          </tr>
+          <tr>
+            <td class="make-cell">Prewo Tapping Machine</td>
+            <td>Max Tap M24</td>
+            <td><span class="badge badge-green">2 Nos</span></td>
+          </tr>
+          <tr>
+            <td class="make-cell">Hand Press Machine</td>
+            <td>—</td>
+            <td><span class="badge badge-green">1 No</span></td>
+          </tr>
+          <tr>
+            <td class="make-cell">Drilling Machine</td>
+            <td>—</td>
+            <td><span class="badge badge-green">1 No</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p><strong>BRIGHT CNC TECH</strong> · Plot No.1, Sri Ganesh Street, Periya Colony Extn Road, Athipet, Chennai – 600 058</p>
+  <p style="margin-top:6px;">Email: brightcnctech@yahoo.com &nbsp;|&nbsp; ISO 9001:2015 Certified</p>
+</div>
+
+</body>
+</html>
